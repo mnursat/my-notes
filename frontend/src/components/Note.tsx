@@ -21,10 +21,18 @@ export default function Note({ title, description, createdAt }) {
       </CardBody>
       <Divider borderColor={"gray"} />
       <CardFooter className="flex flex-col gap-2">
-        Дата: {moment(createdAt).format("DD/MM/YYYY")}
-        <small className="text-xs">
-          Время {moment(createdAt).format("HH:mm:ss")}
-        </small>
+        <div className="flex justify-between	">
+          <div className="flex flex-col">
+            Дата: {moment(createdAt).format("DD.MM.YYYY")}
+            <p className="text-xs">
+              Время: {moment(createdAt).format("HH:mm")}
+            </p>
+          </div>
+          <div className="flex gap-3">
+              <button>Удалить</button>
+              <button>Изменить</button>
+          </div>
+        </div>
       </CardFooter>
     </Card>
   );

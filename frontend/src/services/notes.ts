@@ -8,10 +8,19 @@ export const fetchNotes = async (filter) => {
       params: {
         search: filter?.search,
         sortItem: filter?.sortItem,
-        sordOrder: filter?.sortOrder,
+        sortOrder: filter?.sortOrder,
       },
     });
     return response.data.notes;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+export const createNote = async (note) => {
+  try {
+    var response = await axios.post(url, note);
+    return response.status;
   } catch (e) {
     console.error(e);
   }
