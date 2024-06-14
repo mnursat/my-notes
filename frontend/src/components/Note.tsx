@@ -6,21 +6,26 @@ import {
   Divider,
   Heading,
   Text,
-  Textarea,
 } from "@chakra-ui/react";
+import moment from "moment/moment";
 
-export default function Note() {
+export default function Note({ title, description, createdAt }) {
   return (
     <Card variant={"filled"}>
       <CardHeader>
-        <Heading size={"md"}>Заметка</Heading>
+        <Heading size={"md"}>{title}</Heading>
       </CardHeader>
       <Divider borderColor={"gray"} />
       <CardBody>
-        <Text>Описание</Text>
+        <Text>{description}</Text>
       </CardBody>
       <Divider borderColor={"gray"} />
-      <CardFooter>Дата создания</CardFooter>
+      <CardFooter className="flex flex-col gap-2">
+        Дата: {moment(createdAt).format("DD/MM/YYYY")}
+        <small className="text-xs">
+          Время {moment(createdAt).format("HH:mm:ss")}
+        </small>
+      </CardFooter>
     </Card>
   );
 }
