@@ -26,9 +26,13 @@ export const createNote = async (note) => {
   }
 };
 
-export const deleteNote = async (id) => {
+export const deleteNote = async (id: string) => {
   try {
-    var response = await axios.delete(url, id);
+    var response = await axios.delete(url, {
+      params: {
+        id: id,
+      },
+    });
     return response.status;
   } catch (e) {
     console.error(e);

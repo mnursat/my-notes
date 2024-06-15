@@ -15,9 +15,10 @@ import moment from "moment/moment";
 import { deleteNote } from "../services/notes";
 
 export default function Note({ id, title, description, createdAt }) {
-  async function deleteNote(id) {
-    await deleteNote(id);
-  }
+  const onSubmit = async () => {
+    let statusCode = await deleteNote(id);
+    console.log(statusCode);
+  };
 
   return (
     <Card variant={"filled"}>
@@ -39,12 +40,19 @@ export default function Note({ id, title, description, createdAt }) {
           </div>
           <Wrap>
             <WrapItem>
-              <form action={deleteNote}>
-                <Button type="submit" colorScheme="red">Удалить</Button>
-              </form>
+              <Button
+                onClick={onSubmit}
+                type="submit"
+                colorScheme="red"
+                size={"sm"}
+              >
+                Удалить
+              </Button>
             </WrapItem>
             <WrapItem>
-              <Button colorScheme="blue">Изменить</Button>
+              <Button colorScheme="blue" size={"sm"}>
+                Изменить
+              </Button>
             </WrapItem>
           </Wrap>
         </div>

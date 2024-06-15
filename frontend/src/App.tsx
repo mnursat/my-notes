@@ -19,7 +19,7 @@ function App() {
     };
 
     fetchData();
-  }, [filter]);
+  }, [filter, notes]);
 
   const onCreate = async (note) => {
     await createNote(note);
