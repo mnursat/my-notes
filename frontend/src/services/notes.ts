@@ -25,3 +25,12 @@ export const createNote = async (note) => {
     console.error(e);
   }
 };
+
+export const deleteNote = async (id) => {
+  try {
+    var response = await axios.delete(url, id);
+    return response.status;
+  } catch (e) {
+    console.error(e);
+  }
+};

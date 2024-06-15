@@ -14,7 +14,7 @@ export default function CreateNoteForm({ onCreate }) {
   return (
     <form onSubmit={onSubmit} className="w-full flex flex-col gap-3">
       <div className="flex items-center gap-2">
-        <FaNoteSticky className="size-5"/>
+        <FaNoteSticky className="size-5" />
         <h3 className="font-bold text-xl"> Создать заметку</h3>
       </div>
       <Input

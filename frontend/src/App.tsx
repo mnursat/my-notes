@@ -40,6 +40,7 @@ function App() {
           {notes.map((n) => (
             <li key={n.id}>
               <Note
+                id={n.id}
                 title={n.title}
                 description={n.description}
                 createdAt={n.createdAt}

@@ -1,4 +1,6 @@
 import {
+  Button,
+  ButtonGroup,
   Card,
   CardBody,
   CardFooter,
@@ -6,10 +8,17 @@ import {
   Divider,
   Heading,
   Text,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
 import moment from "moment/moment";
+import { deleteNote } from "../services/notes";
 
-export default function Note({ title, description, createdAt }) {
+export default function Note({ id, title, description, createdAt }) {
+  async function deleteNote(id) {
+    await deleteNote(id);
+  }
+
   return (
     <Card variant={"filled"}>
       <CardHeader>
@@ -28,10 +37,16 @@ export default function Note({ title, description, createdAt }) {
               Время: {moment(createdAt).format("HH:mm")}
             </p>
           </div>
-          <div className="flex gap-3">
-              <button>Удалить</button>
-              <button>Изменить</button>
-          </div>
+          <Wrap>
+            <WrapItem>
+              <form action={deleteNote}>
+                <Button type="submit" colorScheme="red">Удалить</Button>
+              </form>
+            </WrapItem>
+            <WrapItem>
+              <Button colorScheme="blue">Изменить</Button>
+            </WrapItem>
+          </Wrap>
         </div>
       </CardFooter>
     </Card>

@@ -52,6 +52,21 @@ public class NotesController : ControllerBase
         return Ok(new GetNotesResponse(noteDtos));
     }
 
+    [HttpDelete]
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        var note = await dbContext.Notes.FirstOrDefaultAsync(n => n.Id == id);
+
+        if (note is null)
+        {
+            return NotFound($"Note.NotFound with ID = {id}");
+        }
+
+        dbContext.Notes.Remove(note);
+        await dbContext.SaveChangesAsync();
+        return NoContent();
+    }
+
     private Expression<Func<Note, object>> GetSelectorKey(string? sortItem)
     {
         return sortItem switch
